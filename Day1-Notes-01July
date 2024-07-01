@@ -21,3 +21,7 @@ Insert below data at the end
 
 [webserver]
 localhost:42006
+
+Check the connection is done
+
+# ansible webserver -m ping
