@@ -25,3 +25,32 @@ localhost:42006
 Check the connection is done
 
 # ansible webserver -m ping
+
+
+Playbooks:
+============================
+
+# vim playbookRegister.yml
+
+- name: Register output of a task in a variable
+  hosts: webserver
+  tasks:
+  - name: Exeucte a command on the host server
+    shell: hostname -s
+    register: command_output
+  - name: Print the variable value
+    debug: var=command_output  
+
+
+Save the file
+
+# ansible-playbook playbookRegister.yml
+
+
+
+
+
+
+
+
+
