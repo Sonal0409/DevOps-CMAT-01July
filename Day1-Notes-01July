@@ -46,6 +46,27 @@ Save the file
 
 # ansible-playbook playbookRegister.yml
 
+Variables:
+
+# vim playbookvariables.yml
+
+- name: Variables in Playbook
+  hosts: webserver
+  become: true
+  vars:
+   pkg_name: git
+   pkg_state: present
+  tasks:
+  - name: Install a package on host server
+    package: name={{pkg_name}} state={{pkg_state}}
+
+
+save the file (:wq!)
+
+
+# ansible-playbook  playbookvariables.yml
+
+
 
 
 
