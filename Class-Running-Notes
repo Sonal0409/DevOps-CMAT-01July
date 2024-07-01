@@ -1,0 +1,296 @@
+If there is no Automation:
+==================
+
+100 of servers
+
+- install software
+- deploy an application
+- Create users, groups
+- create file
+- copy scripts
+- run jobs
+- collect logs 
+
+Configuration:
+===================
+Connecting to the server and making a change on the server - single server or multiple server
+
+Configuration can be managed  manually or automatically
+
+
+
+Configuration management:
+==========================
+
+- using an automation tool to connect and make several changes on those servers
+- you may connect to the servers at same time to make changes -> faster change management
+- CM also includes tracking where the change has occurred, when was the change done and who did the change
+- CM tools will help us to manage multiple environments at the same time
+- CM tools  will help us to bring consistency across multiple servers
+- CM tool code can be version controlled and shared with all.
+
+CM tools in the market
+
+puppet
+============
+Puppet it is  difficult tool to setup and work with
+Puppet comes with a puppet server and puppet agent
+The puppet agent is responsible to pull the changes form the server and apply on themselves
+Code written in puppet uses Domain specific language (DSL), ruby
+Connection between puppet server and puppet agent node is using SSL
+
+chef
+=============
+Chef server(workstation) where the code is written
+Code written in puppet uses Domain specific language (DSL), ruby
+Chef also has a agent called as chef client
+It works on pull approach 
+
+- Ansible
+
+-> open source tool
+-> RHEL
+-> Linux machine
+-> Push approcah
+-> connects to various servers using SSH
+-> Its agentless tool -> no agent process runs on the worker nodes
+-> it is very easy tool
+-> Write code using YAML
+-> GUI -> Ansible tower
+-> A tool known for its simplicity and ease of use
+-> provides platform for deployment of application and configuration change
+-> It is Command line tool
+
+
+Salt stack
+=================
+-> Push approach
+-> Commercial/Enterprise tool
+-> master and worker connect via SSH
+-> agentless tool
+-> workernodes are called as minions
+-> Write code using YAML
+-> its also has GUI
+
+
+Components of Ansible:
+======================
+
+1. Inventory:
+===================
+
+Inventory is a simple text file which is updated by the user with list of IP address or hostnames where changes have to be done.
+The name of this file is hosts
+
+The default is /etc/ansible
+
+If the user want he can create his own inventory file in directory of the server
+
+There are 2 types of Inventory file:
+==========================
+1.  Static Inventory
+=================
+-> user will create the inventory and update the list of Ip of server
+-> this list is fixed, it does not change frequently
+-> the number of servers in the env are fixed
+-> This file is created and updated manually by the user
+
+> Dynamic Inventory
+=========================
+
+if your infrastructure is 100s of servers on the cloud platform
+If your servers are scaled up or scaled down on need basis on cloud platform
+Then manual creation and updating of inventory file is difficult by the user
+To overcome this problem - Ansible give us a option of dynamic Inventory where ansible will connect to your cloud provide and collect the list of servers that are present in the given region and create the inventory file for you
+
+
+2. Module:
+==================
+
+readymade python code  that we can use to make changes on the host servers
+Any task we have to execute on the worker node we have to use modules
+there are 4000+ modules in Ansible
+
+example:
+command, copy, package
+
+
+3. Playbooks:
+==============
+We write configuration code in playbook
+This code written is YAML
+playbook consist of plays
+a play consist of
+ - hosts : servers where we have to do changes -> Inventory 
+   tasks: list modules to do changes on the server
+
+Once the playbook is executed, all the output will be visible on the ansible controller
+
+4. ansible.cfg
+==============================
+This file consists of parameters of ansible settings and configuration of ansible
+> defaults
+> previllages
+
+This file is present in the directory /etc/ansible
+and has a name ansible.cfg
+The name of the file always remain the same
+You can create ansible.cfg file in any directory. Preferably in the directory where your inventory file and ansible code is present
+
+Setup of ansible Inventory file and SSH connect in the LAB
+=========================================
+
+1. Become root user
+
+# sudo su -
+
+2. Go to ansible directory
+
+# cd /etc/ansible
+
+3. Run the SSH command to generate SSH keys
+
+# ssh-keygen -t rsa (Press Enter when asked for File and Paraphrase details)
+# cat .ssh/id_rsa.pub >> .ssh/authorized_keys
+ssh localhost -p 42006
+
+sudo vim /etc/ansible/hosts
+
+[webservers]
+localhost:42006
+
+=======================
+Register: It is a concept in ansible which will create a variable(a temporary memory location) this variable will store the output of the module execute
+
+
+Debug: This module is used to print a custom message on console or print a variable value
+
+
+====================================
+
+Variables:
+===========================
+
+-> Whenever we have hard coded a data  in the play, there are chances that the data may be repeated again and again the playbook
+-> we will end up re writing the data multiple times. Now if the value changes, we will have to change the data in every place in the playbook.
+-> Ansible suggests is store any repetitive data in a variable
+-> call that variable in the playbook
+-> in case of change of data -> you change the value of variable
+-> the value will reflect in all the playbook
+-> Variable can also be used to set condition for execution tasks
+-> variables can be used to store list of values or maps
+
+There are 2 types of variables:
+===================
+
+ > Custom variable
+ > Ansible magical variables
+ 
+
+Custom variables:
+===================
+
+These are variables created by ansible admin
+The name is given by the admin, the value of the variable is given by admin
+The value is static/same for every host server
+A variable name can include number, letters and only underscores
+
+You custom variable name will not start with ansible keyword or python keyword
+
+Variable name cannot start with a number
+
+Variable name can begin with underscore
+
+
+Variable is a key which can store single value, multiple of values
+
+For variables we create a separate section called as vars: in playbook
+
+You can store variables in a separate file or it can declared in the playbook YAML itself
+
+You can pass the value to a variable at runtime also.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
