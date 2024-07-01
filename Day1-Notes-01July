@@ -19,5 +19,5 @@ Press enter 3 times
 
 Insert below data at the end
 
-[webservers]
+[webserver]
 localhost:42006
