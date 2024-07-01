@@ -1,0 +1,23 @@
+Setup of ansible Inventory file and SSH connect in the LAB
+=========================================
+
+1. Become root user
+
+# sudo su -
+
+2. Run the SSH command to generate SSH keys
+
+# ssh-keygen -t rsa 
+
+Press enter 3 times
+
+# cat ~/.ssh/id_rsa.pub >> .ssh/authorized_keys
+
+# cd /etc/ansible
+
+# sudo vim hosts
+
+Insert below data at the end
+
+[webservers]
+localhost:42006
