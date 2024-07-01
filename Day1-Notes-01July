@@ -11,7 +11,7 @@ Setup of ansible Inventory file and SSH connect in the LAB
 
 Press enter 3 times
 
-# cat ~/.ssh/id_rsa.pub >> .ssh/authorized_keys
+# cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 # cd /etc/ansible
 
