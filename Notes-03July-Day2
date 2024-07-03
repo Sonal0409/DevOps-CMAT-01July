@@ -112,7 +112,7 @@ Fact variables in Ansible using setup module
     when: ansible_os_family != "RedHat"
 
 
-# ansible-playbook ansiplaybookWhen.yml 
+# ansible-playbook playbookWhen.yml 
 
 
 
