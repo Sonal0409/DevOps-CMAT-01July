@@ -30,4 +30,8 @@ Save the file (:wq!)
 
 # ansible-playbook playbookvariables2.yml -vv
 
+Pass the value for a exisitng variable at runtime
+
+# ansible-playbook playbookvariables2.yml --extra-vars file_path=/tmp/file2_ansible
+
 
