@@ -96,6 +96,36 @@ Fact variables in Ansible using setup module
 # ansible webserver -m setup -a "filter=ansible_host*"
 # ansible webserver -m setup -a "filter=ansible_os_family"
 
+=======================================================
+
+# vim playbookWhen.yml
+
+- name: FactVariables in the playbook
+  hosts: webserver
+  become: true
+  tasks:
+  - name: Install httpd Package
+    package: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+  - name: Install apache2 package
+    package: name=apache2 state=present
+    when: ansible_os_family != "RedHat"
+
+
+# ansible-playbook ansiplaybookWhen.yml 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
