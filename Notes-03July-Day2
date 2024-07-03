@@ -90,6 +90,12 @@ save the file
 
 # ansible-playbook playbookLoops.yml
 
+Fact variables in Ansible using setup module
+
+# ansible webserver -m setup -a "filter=ansible_memfree_mb"
+# ansible webserver -m setup -a "filter=ansible_host*"
+# ansible webserver -m setup -a "filter=ansible_os_family"
+
 
 
 
