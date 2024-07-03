@@ -60,7 +60,35 @@ save the file
 # ansible-playbook playbookvaraibles3.yml
 
 
+=========================================
+Loops in ansible:
+=======================================
 
+# vim playbookLoops.yml
+
+- name: Run a module again and again
+  hosts: webserver
+  become: true
+  vars:
+   user_list: # a variable which is storing a list or array of values
+    - user01
+    - user02
+    - user03
+  tasks:
+  - name: Create multiple Users
+    user: name={{item}} state=present
+    loop: "{{user_list}}"
+  - name: Create multiple files
+    file: path={{item}} state=touch
+    loop:
+     - /tmp/ans1
+     - /tmp/ans2
+     - /tmp/ans3
+
+
+save the file
+
+# ansible-playbook playbookLoops.yml
 
 
 
