@@ -1,1 +1,32 @@
 
+# cd /etc/ansible
+
+Create a playbook to fetch variables from a file
+
+# vim variables.yml
+
+file_path: /tmp/ansible_file
+file_state: touch
+pkg_name: tree
+pkg_state: present
+
+
+Save the file (:wq!)
+
+# vim playbookvariables2.yml
+
+- name: Fetch  Variables from a file
+  hosts: webserver
+  become: true
+  vars_files:
+   - variables.yml
+  tasks:
+  - name: Create a file on the hostserver
+    file: path={{file_path}} state={{file_state}}
+  - name: Install a package
+    package: name={{pkg_name}} state={{pkg_state}}
+
+
+# ansible-playbook playbookvariables2.yml -vv
+
+
