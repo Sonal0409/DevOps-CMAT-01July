@@ -135,7 +135,20 @@ Host OS faily is : {{ansible_os_family}}
 Save the file
 
 
+# vim playbookJinja.yml
 
+- name: Copy the jinja2 template
+  hosts: webserver
+  become: true
+  tasks:
+  - name: Copy jinja2 template on the webserver
+    template: src=webfile.j2 dest=/tmp/webfile.txt
+
+Save the file
+
+# ansible-playbook playbookJinja.yml
+
+# cat /tmp/webfile.txt
 
 
 
