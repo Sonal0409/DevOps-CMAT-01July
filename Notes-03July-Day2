@@ -34,4 +34,37 @@ Pass the value for a exisitng variable at runtime
 
 # ansible-playbook playbookvariables2.yml --extra-vars file_path=/tmp/file2_ansible
 
+===============================
+
+Prompt for variable value at runtime -> usefule when we to enter password value at runtime
+
+# vim playbookvaraibles3.yml
+
+- name: Prompt the value to variable at runtime
+  hosts: webserver
+  become: true
+  vars_prompt:
+   - name: username
+     prompt: Enter you user to be created
+     private: false
+   - name: password
+     prompt: Enter the user password
+     private: true
+  tasks:
+  - name: Create a user and password for the user on host server
+    user: name={{username}} password={{password}}
+
+
+save the file
+
+# ansible-playbook playbookvaraibles3.yml
+
+
+
+
+
+
+
+
+
 
