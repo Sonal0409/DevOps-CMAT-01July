@@ -114,8 +114,25 @@ Fact variables in Ansible using setup module
 
 # ansible-playbook playbookWhen.yml 
 
+========================================
+
+Jinja2 templates and Ansible Template module
+================================================
+
+# vim webfile.j2
+
+This is php configuration file
+
+Location of this file is /etc/ansible
+
+Ipaddress of the Host : {{ansible_default_ipv4["address"]}}
+
+Host Node Name is : {{ansible_nodename}}
+
+Host OS faily is : {{ansible_os_family}}
 
 
+Save the file
 
 
 
