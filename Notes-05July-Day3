@@ -92,9 +92,9 @@ save the file
 
 save the file
 
+# cd ../..
 
-
-
+You will be int he /etc/ansible directory now.
 
 
 
