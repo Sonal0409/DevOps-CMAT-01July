@@ -80,8 +80,17 @@ Save the file
 
 Save the file
 
+# vim vars/main.yml
+pkg_name: apache2
+pkg_state: present
 
+save the file
 
+# vim files/index.html
+
+<h1> Files from Ansible Roles </h1>
+
+save the file
 
 
 
