@@ -38,6 +38,36 @@ Save the playbook and run it
 
 # ansible-playbook playbookApache.yml
 
+================================================
+
+Ansible Roles:
+=============================================
+
+# cd /etc/ansible/roles
+
+# ansible-galaxy init apache
+
+# ls
+
+# cd apache
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
