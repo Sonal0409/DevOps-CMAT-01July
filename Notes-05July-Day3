@@ -66,6 +66,7 @@ press i
     service: name={{pkg_name}} state=started
   - name: Deploy html page on apache
     copy: src=index.html dest=/var/www/html
+    notify: Restart the apache2 server
 
 Save the file
 
