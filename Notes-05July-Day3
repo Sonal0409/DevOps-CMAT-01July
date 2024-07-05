@@ -51,6 +51,8 @@ Ansible Roles:
 
 # cd apache
 
+# rm -rf  tests meta README.md
+
 
 
 
