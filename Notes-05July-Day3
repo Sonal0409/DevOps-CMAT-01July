@@ -96,6 +96,18 @@ save the file
 
 You will be int he /etc/ansible directory now.
 
+# vim playbookRoles.yml
+
+
+- name: execute roles
+  hosts: webserver
+  become: true
+  roles:
+   - apache
+
+
+
+# ansible-playbook playbookRoles.yml
 
 
 
