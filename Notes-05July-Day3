@@ -53,6 +53,22 @@ Ansible Roles:
 
 # rm -rf  tests meta README.md
 
+# vim tasks/main.yml
+
+press i
+
+  - name: To execute a command
+    command: hostname -s
+    notify: Print command message
+  - name: Install apache on webserver
+    package: name={{pkg_name}} state={{pkg_state}}
+  - name: Start apache Server
+    service: name={{pkg_name}} state=started
+  - name: Deploy html page on apache
+    copy: src=index.html dest=/var/www/html
+
+Save the file
+
 
 
 
