@@ -160,13 +160,9 @@ save the file
 # vim templates/index.html.j2
 
 This file is for webapplication
-
 It is deployed on server {{ansible_nodename}}
-
 Ipaddress of the Host : {{ansible_default_ipv4["address"]}}
-
 Host Node Name is : {{ansible_nodename}}
-
 Host OS faily is : {{ansible_os_family}}
 
 
