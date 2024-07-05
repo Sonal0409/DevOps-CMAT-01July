@@ -1,0 +1,45 @@
+# sudo su -
+
+# cd /etc/ansible
+
+# vim index.html
+
+<h1> This code is form Ansible Controller </h1>
+
+save the file
+
+# vim playbookApache.yml
+
+
+- name: HTML page deployment
+  hosts: webserver
+  become: true
+  vars:
+   pkg_name: apache2
+   pkg_state: present
+  tasks:
+  - name: To execute a command
+    command: hostname -s
+    notify: Print command message
+  - name: Install apache on webserver
+    package: name={{pkg_name}} state={{pkg_state}}
+  - name: Start apache Server
+    service: name={{pkg_name}} state=started
+  - name: Deploy html page on apache
+    copy: src=index.html dest=/var/www/html
+    notify: Restart the apache2 server     # notify the handlers taks to be executed when this task status = changed
+  handlers:  # these tasks are not executed by themselves
+  - name: Restart the apache2 server
+    service: name={{pkg_name}} state=restarted
+  - name: Print command message
+    debug: msg="command executed successfully"
+
+Save the playbook and run it
+
+# ansible-playbook playbookApache.yml
+
+
+
+
+
+
