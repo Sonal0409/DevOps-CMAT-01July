@@ -108,7 +108,21 @@ filter {
 
 }  
 
+Save the file
 
+# terraform apply --auto-approve
+
+Data Block:
+# this is like a query block, that will fetch ami id based on your filter input
+Data Block is like a filter which is used to filter values on AWS and fetch it on the terraform machine so that terraform can use them in creating the resource
+
+The data block will not create anything on AWS. it just fetches data for terraform
+
+The data block will fetch the ami id -> based on the filters that I give
+We will then use that ami id 
+
+
+===================================
 
 
 
