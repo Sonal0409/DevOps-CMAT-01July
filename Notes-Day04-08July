@@ -87,9 +87,26 @@ resource "aws_s3_bucket" "mys3" {
 
 # terraform apply --auto-approve
 
+==============================================
+Data Block:
+==============================================
 
+Just add this block to exisitng code
 
+# vim aws-infra.tf
 
+data "aws_ami" "myami"{
+
+most_recent = true
+
+owners = ["amazon"]
+
+filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+
+}  
 
 
 
