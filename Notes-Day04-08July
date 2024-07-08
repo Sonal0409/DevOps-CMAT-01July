@@ -124,6 +124,30 @@ We will then use that ami id
 
 ===================================
 
+Use the data block output which is an AMI id into your terraform resource block
+   # the data is stored in the terraform state file. we fetch the id form there
+
+# vim aws-infra.tf
+
+resource "aws_instance" "myec2" {
+  ami           = data.aws_ami.myami.id        
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "instance-1"
+  }
+   
+
+}
+
+
+Save the code
+
+# terraform apply --auto-approve
+
+
+
+
 
 
 
