@@ -174,8 +174,56 @@ Save the file
 
 Use or call the variables in the aws-infra.tf file
 
+==================================================
+
+# vim aws-infra.tf
+
+provider "aws" {
+
+region = var.region
+
+shared_credentials_files = ["~/.aws/credentials"]
+
+}
+
+resource "aws_s3_bucket" "mys3" {
+  bucket = "mybucket3456356"
+
+  tags = {
+    Name        = "My bucket 1"
+
+  }
+}
+
+data "aws_ami" "myami"{
+
+most_recent = true
+
+owners = ["amazon"]
+
+filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+
+}   # this is like a query block, that will fetch ami id based on your filter input
 
 
+resource "aws_instance" "myec2" {
+  ami           = data.aws_ami.myami.id  # the data is stored in the terraform state file. we fetch the id form there
+
+ instance_type = var.instance_type
+
+  tags = {
+    Name = var.env
+  }
+
+
+}
+
+
+
+# terraform plan
 
 
 
