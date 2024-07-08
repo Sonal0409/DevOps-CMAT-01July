@@ -61,10 +61,31 @@ Save the file.
 The above command will download aws terraform plugin that will be used to connect to AWS and create Infrastructure.
 
 
+=====================================
+
+Create s3 bucket resource
+=====================================
+
+vim aws-infra.tf
+
+provider "aws" {
+
+region = "us-east-1"
+shared_credentials_files = ["~/.aws/credentials"]
+
+}
+
+resource "aws_s3_bucket" "mys3" {
+  bucket = "mybucket3456356"
+
+  tags = {
+    Name        = "My bucket 1"
+   
+  }
+}
 
 
-
-
+# terraform apply --auto-approve
 
 
 
