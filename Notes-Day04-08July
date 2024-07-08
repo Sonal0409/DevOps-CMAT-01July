@@ -145,8 +145,34 @@ Save the code
 
 # terraform apply --auto-approve
 
+===============================================
+
+Variables in terraform
+===============================================
+
+# vim variables.tf
+
+variable "instance_type" {
+
+default = "t2.nano"
+
+}
+
+variable "region" {
+
+default = "us-east-1"
+
+}
+
+variable "env" {
+ default = "Dev"
+
+}
 
 
+Save the file
+
+Use or call the variables in the aws-infra.tf file
 
 
 
