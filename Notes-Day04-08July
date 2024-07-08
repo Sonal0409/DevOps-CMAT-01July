@@ -23,3 +23,28 @@ On the left side→ click on Users→ Click on ADD user button →under user det
 
 Click on the user name Terraform →Click on security credentials tab→ scroll down to access key→ click on create access key→Click on Command Line Interface (CLI) → Scroll down→Select the box of→ I understand the above recommendation and want to proceed to create an access key. → click on next → click on create access key
 
+
+Configure AWS CLI on the lab machine, and save the access key and secret key on the lab
+
+
+# aws configure
+
+Give the valid access key
+
+Give the valid secret key
+
+Press enter, no need to give any region and format option
+To verify if the credentials have been set for aws
+
+# cat ~/.aws/credentials
+
+
+
+
+
+
+
+
+
+
+
