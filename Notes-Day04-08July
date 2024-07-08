@@ -39,6 +39,48 @@ To verify if the credentials have been set for aws
 # cat ~/.aws/credentials
 
 
+=========================================
+# mkdir terraformfiles
+
+# cd terraformfiles
+
+# vim aws-infra.tf
+
+provider "aws" {
+
+region = "us-east-1"
+shared_credentials_files = ["~/.aws/credentials"]
+
+}
+
+
+Save the file.
+
+# terraform init
+
+The above command will download aws terraform plugin that will be used to connect to AWS and create Infrastructure.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
