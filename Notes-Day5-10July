@@ -131,8 +131,65 @@ resource "aws_security_group" "sl-sg" {
 }
 
 
+resource "tls_private_key" "web-key1" {
+  algorithm = "RSA"
+
+}
+
+
+resource "aws_key_pair" "web-key1" {
+  key_name   = "web-key1"
+   public_key = tls_private_key.web-key1.public_key_openssh
+
+}
+
+resource "local_file" "web-key1"{
+
+content = tls_private_key.web-key1.private_key_pem
+filename = "web-key1.pem"
+
+}
+
+resource "aws_instance" "myec2" {
+  ami           = "ami-0195204d5dce06d99"
+  instance_type = "t2.micro"
+  key_name = "web-key1"
+  subnet_id = aws_subnet.subnet-1.id
+  security_groups = [aws_security_group.sl-sg.id]
+  tags = {
+    Name = "terraform-instance"
+  }
+
+ provisioner "remote-exec" {
+  connection {
+    type     = "ssh"
+    user     = "ec2-user"
+    private_key = tls_private_key.web-key1.private_key_pem
+    host     = self.public_ip
+  }
+  inline = [
+  "sudo amazon-linux-extras install java-openjdk11 -y",
+     "sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo",
+     "sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key",
+      "sudo yum install jenkins -y",
+      "sudo systemctl start jenkins",
+      "sudo systemctl enable jenkins"
+
+
+]
+
+
+
+}
+
+}
+
+
+
+
 Save the file
 
+# terraform init
 # terraform apply --auto-approve
 
 
