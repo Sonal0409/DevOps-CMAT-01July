@@ -70,7 +70,11 @@ resource "aws_route_table_association" "a" {
 }
 
 
+Save the file
 
+# terraform init
+
+# terraform apply --auto-approve
 
 
 
