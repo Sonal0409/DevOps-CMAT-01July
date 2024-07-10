@@ -131,7 +131,9 @@ resource "aws_security_group" "sl-sg" {
 }
 
 
+Save the file
 
+# terraform apply --auto-approve
 
 
 
