@@ -77,6 +77,59 @@ Save the file
 # terraform apply --auto-approve
 
 
+Open the same file and add below resources
+
+
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.sl-vpc.id
+  depends_on = [aws_vpc.sl-vpc]
+  tags = {
+    Name = "sl-gw"
+  }
+}
+
+resource "aws_route" "sl-route" {
+  route_table_id = aws_route_table.sl-route-table.id
+   destination_cidr_block    = "0.0.0.0/0"
+   gateway_id = aws_internet_gateway.gw.id
+}
+
+resource "aws_security_group" "sl-sg" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic and all outbound traffic"
+  vpc_id      = aws_vpc.sl-vpc.id
+  ingress{
+   from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+
+
+
+ }
+
+ ingress{
+   from_port        = 8080
+    to_port          = 8080
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+
+
+
+ }
+
+ egress{
+   from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+
+
+
+ }
+
+}
+
 
 
 
