@@ -23,3 +23,33 @@ Give the valid access key
 Give the valid secret key
 
 Press enter, no need to give any region and format option
+
+=========================================================
+
+# mkdir terraformProject
+
+# cd terraformProject
+
+# vim aws-infra.tf
+
+provider "aws" {
+
+region = "us-east-1"
+shared_credentials_files = ["~/.aws/credentials"]
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
